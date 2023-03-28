@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: exceptions.mapper.TrackExceptionMapperTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in exceptions.mapper.TrackExceptionMapperTest
+testToResponseWithDeleteTrackFromPlaylistException  Time elapsed: 0 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithDeleteTrackFromPlaylistException(TrackExceptionMapperTest.java:33)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithDeleteTrackFromPlaylistException(TrackExceptionMapperTest.java:33)
+
+testToResponseWithOtherException  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithOtherException(TrackExceptionMapperTest.java:55)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithOtherException(TrackExceptionMapperTest.java:55)
+
+testToResponseWithAddTrackToPlaylistException  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithAddTrackToPlaylistException(TrackExceptionMapperTest.java:22)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithAddTrackToPlaylistException(TrackExceptionMapperTest.java:22)
+
+testToResponseWithGetTracksException  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithGetTracksException(TrackExceptionMapperTest.java:44)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TrackExceptionMapperTest.testToResponseWithGetTracksException(TrackExceptionMapperTest.java:44)
+

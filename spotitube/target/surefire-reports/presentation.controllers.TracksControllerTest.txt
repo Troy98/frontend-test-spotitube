@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: presentation.controllers.TracksControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in presentation.controllers.TracksControllerTest
+tracksShouldReturnOkResponse  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at presentation.controllers.TracksControllerTest.tracksShouldReturnOkResponse(TracksControllerTest.java:43)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at presentation.controllers.TracksControllerTest.tracksShouldReturnOkResponse(TracksControllerTest.java:43)
+

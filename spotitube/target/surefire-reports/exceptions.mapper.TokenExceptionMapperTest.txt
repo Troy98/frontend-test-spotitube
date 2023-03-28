@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: exceptions.mapper.TokenExceptionMapperTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in exceptions.mapper.TokenExceptionMapperTest
+testToResponseWithInvalidTokenException  Time elapsed: 0 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TokenExceptionMapperTest.testToResponseWithInvalidTokenException(TokenExceptionMapperTest.java:20)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TokenExceptionMapperTest.testToResponseWithInvalidTokenException(TokenExceptionMapperTest.java:20)
+
+testToResponseWithOtherException  Time elapsed: 0 s  <<< ERROR!
+java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TokenExceptionMapperTest.testToResponseWithOtherException(TokenExceptionMapperTest.java:31)
+Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
+	at exceptions.mapper.TokenExceptionMapperTest.testToResponseWithOtherException(TokenExceptionMapperTest.java:31)
+

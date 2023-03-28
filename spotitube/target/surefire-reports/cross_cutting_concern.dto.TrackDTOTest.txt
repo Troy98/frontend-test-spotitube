@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cross_cutting_concern.dto.TrackDTOTest
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 s - in cross_cutting_concern.dto.TrackDTOTest
