@@ -46,7 +46,7 @@ export class LoginService extends RestfulSpotitubeClientService {
   private handleHanLoginRequest(): void {
     const endpointUrl = this.createEndpointUrl(AppConstants.API_HAN_LOGIN);
 
-    this.httpClient.get("http://localhost:8080/spotitube/ " + endpointUrl).subscribe(data => {
+    this.httpClient.get("http://localhost:8080/spotitube" + endpointUrl).subscribe(data => {
       window.location.href = data["url"];
     }, err => this.handleLoginErrors(err))
   }
