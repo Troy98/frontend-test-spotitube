@@ -44,6 +44,7 @@ export class LoginService extends RestfulSpotitubeClientService {
   }
 
   public loginWithToken(): void {
+    this.setNewSettings("http://localhost:8080/spotitube");
     this.handleLoginWithTokenRequest();
   }
 
