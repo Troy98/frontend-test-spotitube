@@ -66,7 +66,7 @@ export class LoginService extends RestfulSpotitubeClientService {
     // }
 
     //const loginRequestBody = JSON.stringify(accessToken);
-    const endpointUrl = "http://localhost:8080/spotitube/login_token?access_token=" + accessToken;
+    const endpointUrl = "http://localhost:8080/spotitube/login_token?accessToken=" + accessToken;
 
     this.httpClient.post<LoginResponse>(endpointUrl,
       //loginRequestBody,
