@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../services/login/login.service';
 import {Settings} from '../../models/settings/settings.interface.model';
+import {Observable, tap} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) {
   }
 
+
   ngOnInit() {
     this.loginService.getSettings()
       .then(settings => this.serverUrl = settings.server)
@@ -25,6 +29,10 @@ export class LoginComponent implements OnInit {
 
   public login(): void {
     this.loginService.login(this.user, this.password, this.serverUrl)
+  }
+
+  public hanLogin(): void {
+    return this.loginService.hanLogin();
   }
 
   private setServer(settings: Settings): void {

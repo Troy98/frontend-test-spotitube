@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AppConstants} from '../../app.constants';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {LoginRequest} from '../../models/login-request/login-request.model';
 import {LoginResponse} from '../../models/login-response/login-response.model';
 import {RestfulSpotitubeClientService} from '../restful-spotitube-client/restful-spotitube-client.service';
 import {LoggingService} from '../logging/logging.service';
 import {PlaylistService} from '../playlist/playlist.service';
 import {TrackService} from '../track/track.service';
+import {hanLoginResponse} from "../../models/han-login-response/han-login.response";
 
 @Injectable()
 export class LoginService extends RestfulSpotitubeClientService {
@@ -37,6 +38,18 @@ export class LoginService extends RestfulSpotitubeClientService {
 
     this.setNewSettings(serverUrl);
     this.handleLoginRequest(user, password);
+  }
+
+  public hanLogin(): void {
+    this.handleHanLoginRequest();
+  }
+
+  private handleHanLoginRequest(): void {
+    const endpointUrl = this.createEndpointUrl(AppConstants.API_HAN_LOGIN);
+
+    this.httpClient.get("http://localhost:8080/spotitube/ " + endpointUrl).subscribe(data => {
+      window.location.href = data["url"];
+    }, err => this.handleLoginErrors(err))
   }
 
   /**

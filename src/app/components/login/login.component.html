@@ -29,8 +29,13 @@
   </mat-card-content>
 
   <mat-card-actions align="end">
-    <button mat-button [disabled]="!user || user.trim() === '' || !serverUrl || serverUrl.trim() === ''"
-            (click)="login()"> Login
+    <button mat-button [disabled]="!user || user.trim() === '' || !serverUrl || serverUrl.trim() === ''">
+      Login
+    </button>
+  </mat-card-actions>
+  <mat-card-actions align="end">
+    <button [class]="'han-account'" mat-button
+            (click)="hanLogin()"> Login met HAN-account
     </button>
   </mat-card-actions>
 </mat-card>
