@@ -56,18 +56,13 @@ public class LoginController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response handleHANLogin(@QueryParam("accessToken") String accessToken) {
-      Config config = createConfig();
-      AccessToken accessToken1 = null;
       String url = "https://connect.test.surfconext.nl/oidc/userinfo";
-      String token = accessToken1.getValue();
 
 
       try{
           HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
           con.setRequestMethod("GET");
-          con.setRequestProperty("Authorization", "Bearer " + token);
-
-          int responseCode = con.getResponseCode();
+          con.setRequestProperty("Authorization", "Bearer " + accessToken);
 
           // Parse the JSON response using the javax.json API
           JsonObject json = Json.createReader(con.getInputStream()).readObject();
@@ -75,7 +70,7 @@ public class LoginController {
           String email = json.getString("email");
 
           if(emailVerified){
-            return Response.ok(new LoginResponseDTO(email, token)).build();
+            return Response.ok(new LoginResponseDTO(email, accessToken)).build();
           }
           else{
             return Response.status(Response.Status.UNAUTHORIZED).entity("Email not verified.").build();
