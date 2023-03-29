@@ -70,7 +70,7 @@ public class LoginController {
           String email = json.getString("email");
 
           if(emailVerified){
-            return Response.ok(new LoginResponseDTO(email, accessToken)).build();
+            return Response.ok(new LoginResponseDTO(email, "sadasdsa")).build();
           }
           else{
             return Response.status(Response.Status.UNAUTHORIZED).entity("Email not verified.").build();

@@ -71,7 +71,9 @@ export class LoginService extends RestfulSpotitubeClientService {
     this.httpClient.post<LoginResponse>(endpointUrl,
       //loginRequestBody,
       {headers: this.headers})
-      .subscribe(data => this.handleLoginResponse(data), err => this.handleLoginErrors(err));
+      .subscribe(data =>
+      {console.log(data)
+        this.handleLoginResponse(data)}, err => this.handleLoginErrors(err));
 
   }
 
