@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     console.log("checkAccessToken()");
     // Check if accessToken is present in the URL
     const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('access_token');
+    const accessToken = urlParams.get('accessToken');
     if (accessToken) {
       // Use loginWithToken() function if this if statement is true
       console.log("accessToken is present");
