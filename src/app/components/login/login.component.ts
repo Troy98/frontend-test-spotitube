@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
       .then(settings => this.serverUrl = settings.server)
       .catch(any => this.serverUrl = '');
     this.loginService.settingsChanged$.subscribe(settings => this.setServer(settings));
+    this.checkAccessToken();
   }
 
   public login(): void {
@@ -30,6 +31,18 @@ export class LoginComponent implements OnInit {
 
   public hanLogin(): void {
     return this.loginService.hanLogin();
+  }
+
+  checkAccessToken() {
+    console.log("checkAccessToken()");
+    // Check if accessToken is present in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+    if (accessToken) {
+      // Use loginWithToken() function if this if statement is true
+      console.log("accessToken is present");
+      this.loginWithToken();
+    }
   }
 
   public loginWithToken(): void {
