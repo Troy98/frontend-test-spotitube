@@ -7,7 +7,6 @@ import {RestfulSpotitubeClientService} from '../restful-spotitube-client/restful
 import {LoggingService} from '../logging/logging.service';
 import {PlaylistService} from '../playlist/playlist.service';
 import {TrackService} from '../track/track.service';
-import {hanLoginResponse} from "../../models/han-login-response/han-login.response";
 
 @Injectable()
 export class LoginService extends RestfulSpotitubeClientService {

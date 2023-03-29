@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../services/login/login.service';
 import {Settings} from '../../models/settings/settings.interface.model';
-import {Observable, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
