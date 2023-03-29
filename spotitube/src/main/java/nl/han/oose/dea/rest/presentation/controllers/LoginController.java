@@ -9,14 +9,18 @@ import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.id.State;
 import com.nimbusds.oauth2.sdk.token.AccessToken;
 import jakarta.inject.Inject;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
+import net.minidev.json.JSONObject;
 import nl.han.oose.dea.rest.business.services.LoginService;
 import nl.han.oose.dea.rest.cross_cutting_concern.dto.LoginRequestDTO;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import jakarta.ws.rs.core.Response;
 
 @Path("/")
 public class LoginController {
@@ -31,12 +35,14 @@ public class LoginController {
         this.loginService = loginService;
     }
 
-    @POST
-    @Path("/login")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public String handleLoginRequest(LoginRequestDTO loginRequest) {
+    @GET
+    @Path("/han_login")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject handleLoginRequest() {
         Config config = createConfig();
-        return generateAuthorizationUrl(config);
+        var json = new JSONObject();
+      json.put("url", generateAuthorizationUrl(config));
+      return json;
     }
 
     private Config createConfig() {
@@ -46,7 +52,7 @@ public class LoginController {
         config.setClientSecret("DF9zhnTSfzqu1HpKpeUZ");
         config.setAuthorizationEndpoint("https://connect.test.surfconext.nl/oidc/authorize");
         config.setTokenEndpoint("https://connect.test.surfconext.nl/oidc/token");
-        config.setRedirectUrl("https://surfconext.netlify.app/callback");
+        config.setRedirectUrl("http://localhost:8080/spotitube/callback");
         return config;
     }
 
@@ -69,22 +75,24 @@ public class LoginController {
         return authRequest.toURI().toString();
     }
 
-    @GET
-    @Path("/callback")
-    public String handleCallback(@QueryParam("code") String code, @QueryParam("state") String state) {
-        System.out.println(code);
-        System.out.println("CALLBACK HIT");
-        Config config = createConfig();
-        AccessToken accessToken = null;
-        try {
-            accessToken = exchangeAuthorizationCodeForTokens(config, code);
-        } catch (IOException | ParseException | URISyntaxException e) {
-            e.printStackTrace();
-            return "Error occurred during token exchange.";
-        }
-        System.out.println(accessToken.getValue());
-        return "Access token: " + accessToken.getValue();
+  @GET
+  @Path("/callback")
+  public Response handleCallback(@QueryParam("code") String code, @QueryParam("state") String state) {
+    System.out.println(code);
+    System.out.println("CALLBACK HIT");
+    Config config = createConfig();
+    AccessToken accessToken = null;
+    try {
+      accessToken = exchangeAuthorizationCodeForTokens(config, code);
+    } catch (IOException | ParseException | URISyntaxException e) {
+      e.printStackTrace();
+      return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error occurred during token exchange.").build();
     }
+    System.out.println(accessToken.getValue());
+
+    String spotitubeAppUrl = "https://surfconext.netlify.app/?accessToken=" + accessToken.getValue();
+    return Response.status(Response.Status.FOUND).location(URI.create(spotitubeAppUrl)).build();
+  }
 
     // ... (other methods)
 
