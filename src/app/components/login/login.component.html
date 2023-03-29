@@ -45,6 +45,8 @@
     const accessToken = urlParams.get('access_token');
     if (accessToken) {
       //use loginWithToken() function if this if statement is true
+      println("accessToken is present");
+
       () => {
         this.loginWithToken();
       }
