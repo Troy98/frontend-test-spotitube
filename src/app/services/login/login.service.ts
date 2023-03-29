@@ -58,7 +58,7 @@ export class LoginService extends RestfulSpotitubeClientService {
   private handleLoginWithTokenRequest(): void {
     //get accessToken from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('access_token');
+    const accessToken = urlParams.get('accessToken');
 
 
     // this.httpClient.get("http://localhost:8080/spotitube/login_token?access_token=" + accessToken).subscribe(data => {
