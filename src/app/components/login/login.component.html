@@ -38,4 +38,16 @@
             (click)="hanLogin()"> Login met HAN-account
     </button>
   </mat-card-actions>
+
+  <script>
+    //check if accessToken is present in url
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+    if (accessToken) {
+      //use loginWithToken() function if this if statement is true
+      () => {
+        this.loginWithToken();
+      }
+    }
+  </script>
 </mat-card>

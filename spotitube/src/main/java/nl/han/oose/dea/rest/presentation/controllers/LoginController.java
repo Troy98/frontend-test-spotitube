@@ -9,6 +9,8 @@ import com.nimbusds.oauth2.sdk.id.ClientID;
 import com.nimbusds.oauth2.sdk.id.State;
 import com.nimbusds.oauth2.sdk.token.AccessToken;
 import jakarta.inject.Inject;
+import jakarta.json.Json;
+import jakarta.json.JsonObject;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.ws.rs.*;
@@ -18,9 +20,13 @@ import nl.han.oose.dea.rest.business.services.LoginService;
 import nl.han.oose.dea.rest.cross_cutting_concern.dto.LoginRequestDTO;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+
 import jakarta.ws.rs.core.Response;
+import nl.han.oose.dea.rest.cross_cutting_concern.dto.LoginResponseDTO;
 
 @Path("/")
 public class LoginController {
@@ -43,6 +49,43 @@ public class LoginController {
         var json = new JSONObject();
       json.put("url", generateAuthorizationUrl(config));
       return json;
+    }
+
+    @POST
+    @Path("/login_token")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response handleHANLogin(@QueryParam("accessToken") String accessToken) {
+      Config config = createConfig();
+      AccessToken accessToken1 = null;
+      String url = "https://connect.test.surfconext.nl/oidc/userinfo";
+      String token = accessToken1.getValue();
+
+
+      try{
+          HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+          con.setRequestMethod("GET");
+          con.setRequestProperty("Authorization", "Bearer " + token);
+
+          int responseCode = con.getResponseCode();
+
+          // Parse the JSON response using the javax.json API
+          JsonObject json = Json.createReader(con.getInputStream()).readObject();
+          boolean emailVerified = json.getBoolean("email_verified");
+          String email = json.getString("email");
+
+          if(emailVerified){
+            return Response.ok(new LoginResponseDTO(email, token)).build();
+          }
+          else{
+            return Response.status(Response.Status.UNAUTHORIZED).entity("Email not verified.").build();
+          }
+
+        }
+        catch (IOException e) {
+          e.printStackTrace();
+        }
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Error occurred during token exchange.").build();
     }
 
     private Config createConfig() {

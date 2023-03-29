@@ -43,12 +43,36 @@ export class LoginService extends RestfulSpotitubeClientService {
     this.handleHanLoginRequest();
   }
 
+  public loginWithToken(): void {
+    this.handleLoginWithTokenRequest();
+  }
+
   private handleHanLoginRequest(): void {
     const endpointUrl = this.createEndpointUrl(AppConstants.API_HAN_LOGIN);
 
     this.httpClient.get("http://localhost:8080/spotitube" + endpointUrl).subscribe(data => {
       window.location.href = data["url"];
     }, err => this.handleLoginErrors(err))
+  }
+
+  private handleLoginWithTokenRequest(): void {
+    //get accessToken from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const accessToken = urlParams.get('access_token');
+
+
+    // this.httpClient.get("http://localhost:8080/spotitube/login_token?access_token=" + accessToken).subscribe(data => {
+    //  this.handleLoginResponse(data);
+    // }
+
+    //const loginRequestBody = JSON.stringify(accessToken);
+    const endpointUrl = "http://localhost:8080/spotitube/login_token?access_token=" + accessToken;
+
+    this.httpClient.post<LoginResponse>(endpointUrl,
+      //loginRequestBody,
+      {headers: this.headers})
+      .subscribe(data => this.handleLoginResponse(data), err => this.handleLoginErrors(err));
+
   }
 
   /**

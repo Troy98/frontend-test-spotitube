@@ -32,6 +32,10 @@ export class LoginComponent implements OnInit {
     return this.loginService.hanLogin();
   }
 
+  public loginWithToken(): void {
+    return this.loginService.loginWithToken();
+  }
+
   private setServer(settings: Settings): void {
     if (settings) {
       this.serverUrl = settings.server;
