@@ -9,6 +9,7 @@ export class AppConstants {
   public static DIALOG_WIDTH = '300px';
 
   public static API_LOGIN = '/login';
+  public static API_HAN_LOGIN = '/han_login';
   public static API_PLAYLISTS = '/playlists';
   public static API_TRACKS = '/tracks';
 
