@@ -2,6 +2,7 @@ package nl.han.oose.dea.rest.business.services;
 
 import jakarta.inject.Inject;
 import nl.han.oose.dea.rest.data.dao.LoginDAO;
+import nl.han.oose.dea.rest.data.exceptions.custom.login.UserNotFoundException;
 import nl.han.oose.dea.rest.data.mappers.LoginMapper;
 import nl.han.oose.dea.rest.data.exceptions.custom.login.WrongCredentialsException;
 import nl.han.oose.dea.rest.cross_cutting_concern.dto.LoginRequestDTO;
@@ -53,9 +54,26 @@ public class LoginService {
         return loginMapper.mapToDTO(loginRequestDTO.getUser(), token);
     }
 
-    private boolean isUserValid(LoginRequestDTO loginRequestDTO) {
+    public LoginResponseDTO createHANUser(LoginRequestDTO loginRequestDTO) {
+      String token = tokenService.generateToken(loginRequestDTO.getUser());
+
+      if(isUserValid(loginRequestDTO)) {
+        return loginMapper.mapToDTO(loginRequestDTO.getUser(), token);
+      }
+
+      try {
+        loginDAO.createUser(loginRequestDTO.getUser(), loginRequestDTO.getPassword());
+      } catch (Exception e) {
+        throw new UserNotFoundException("Error while creating user");
+      }
+
+      return loginMapper.mapToDTO(loginRequestDTO.getUser(), token);
+    }
+
+    public boolean isUserValid(LoginRequestDTO loginRequestDTO) {
         return Objects.equals(loginDAO.userValidationCheck(loginRequestDTO.getUser(), loginRequestDTO.getPassword()), loginRequestDTO.getUser());
     }
+
 
 
 

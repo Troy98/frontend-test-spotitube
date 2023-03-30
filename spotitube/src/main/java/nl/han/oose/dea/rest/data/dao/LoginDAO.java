@@ -25,4 +25,17 @@ public class LoginDAO extends SuperConnection {
                 throw new UserNotFoundException("Error retrieving the user from the database.");
             }
         }
+
+        public void createUser(String user, String password) {
+            //layer supertype.
+
+            try (Connection conn = getConnection()) {
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO users (username, password) VALUES (?, ?)");
+                stmt.setString(1, user);
+                stmt.setString(2, password);
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new UserNotFoundException("Error retrieving the user from the database.");
+            }
+        }
 }

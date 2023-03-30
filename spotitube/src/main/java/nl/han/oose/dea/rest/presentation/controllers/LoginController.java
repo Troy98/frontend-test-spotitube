@@ -71,7 +71,7 @@ public class LoginController {
           String email = json.getString("email");
 
           if(emailVerified){
-            return Response.ok(loginService.userValid(new LoginRequestDTO(email.toLowerCase(), "password"))).build();
+            return Response.ok(loginService.createHANUser(new LoginRequestDTO(email.toLowerCase(), "password"))).build();
           }
           else{
             return Response.status(Response.Status.UNAUTHORIZED).entity("Email not verified.").build();
