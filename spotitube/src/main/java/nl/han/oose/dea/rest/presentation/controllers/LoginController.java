@@ -67,10 +67,11 @@ public class LoginController {
           // Parse the JSON response using the javax.json API
           JsonObject json = Json.createReader(con.getInputStream()).readObject();
           boolean emailVerified = json.getBoolean("email_verified");
+
           String email = json.getString("email");
 
           if(emailVerified){
-            return Response.ok(new LoginResponseDTO(email, "sadasdsa")).build();
+            return Response.ok(loginService.userValid(new LoginRequestDTO(email.toLowerCase(), "password"))).build();
           }
           else{
             return Response.status(Response.Status.UNAUTHORIZED).entity("Email not verified.").build();

@@ -37,23 +37,5 @@
     <button [class]="'han-account'" mat-button
             (click)="hanLogin()"> Login met HAN-account
     </button>
-    <button [class]="'han-account'" mat-button
-            (click)="loginWithToken()"> Login met HAN-account
-    </button>
   </mat-card-actions>
-
-  <script>
-    println( "test")
-    //check if accessToken is present in url
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('accessToken');
-    if (accessToken) {
-      //use loginWithToken() function if this if statement is true
-      println("accessToken is present");
-
-      () => {
-        this.loginWithToken();
-      }
-    }
-  </script>
 </mat-card>
