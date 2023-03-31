@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: surfconext.LoginControllerTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 1.994 s <<< FAILURE! - in surfconext.LoginControllerTest
+shouldRedirectToSurfconextAppWithAccessToken  Time elapsed: 0.283 s  <<< FAILURE!
+java.lang.AssertionError: 
+
+Expected: <302>
+     but: was <500>
+	at surfconext.LoginControllerTest.shouldRedirectToSurfconextAppWithAccessToken(LoginControllerTest.java:82)
+

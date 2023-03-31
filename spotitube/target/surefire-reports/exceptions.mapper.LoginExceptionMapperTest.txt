@@ -1,22 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: exceptions.mapper.LoginExceptionMapperTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in exceptions.mapper.LoginExceptionMapperTest
-testToResponseWithOtherException  Time elapsed: 0 s  <<< ERROR!
-java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithOtherException(LoginExceptionMapperTest.java:43)
-Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithOtherException(LoginExceptionMapperTest.java:43)
-
-testToResponseWithUserNotFoundException  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithUserNotFoundException(LoginExceptionMapperTest.java:21)
-Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithUserNotFoundException(LoginExceptionMapperTest.java:21)
-
-testToResponseWithWrongCredentialsException  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithWrongCredentialsException(LoginExceptionMapperTest.java:32)
-Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.LoginExceptionMapperTest.testToResponseWithWrongCredentialsException(LoginExceptionMapperTest.java:32)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in exceptions.mapper.LoginExceptionMapperTest

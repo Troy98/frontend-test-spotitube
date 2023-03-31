@@ -16,6 +16,7 @@ exceptions\mapper\TrackExceptionMapperTest.class
 data\dao\TracksDAOTest.class
 cross_cutting_concern\dto\TokenDTOTest.class
 cross_cutting_concern\dto\PlaylistDTOTest.class
+surfconext\LoginControllerTest.class
 data\local\TokenGeneratorTest.class
 cross_cutting_concern\dto\TrackDTOTest.class
 data\local\TokenDBTest.class

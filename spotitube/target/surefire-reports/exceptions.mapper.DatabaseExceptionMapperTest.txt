@@ -1,10 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: exceptions.mapper.DatabaseExceptionMapperTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.012 s <<< FAILURE! - in exceptions.mapper.DatabaseExceptionMapperTest
-testToResponse  Time elapsed: 0.012 s  <<< ERROR!
-java.lang.RuntimeException: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.DatabaseExceptionMapperTest.testToResponse(DatabaseExceptionMapperTest.java:20)
-Caused by: java.lang.ClassNotFoundException: Provider for jakarta.ws.rs.ext.RuntimeDelegate cannot be found
-	at exceptions.mapper.DatabaseExceptionMapperTest.testToResponse(DatabaseExceptionMapperTest.java:20)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.041 s - in exceptions.mapper.DatabaseExceptionMapperTest
